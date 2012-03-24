@@ -1,0 +1,729 @@
+
+drop database autoservice;
+create database autoservice;
+use autoservice;
+create table oilfilters(
+	oilfiltercode		varchar (9)	not null,
+	vehicle			varchar (10) 	not null,
+	vehicleapp		varchar (100)	not null,
+	unitprice		decimal (8,2)	not null,
+	qtyonhand		int (5)		not null,
+	constraint primary key (oilfiltercode, vehicle)
+	);
+create table fuelfilters(
+	fuelfiltercode		varchar (9)	not null,
+	vehicle			varchar (10) 	not null,
+	vehicleapp		varchar (100)	not null,
+	unitprice		decimal (8,2)	not null,
+	qtyonhand		int (5)		not null,
+	constraint primary key (fuelfiltercode, vehicle)
+	);
+create table airfilters(
+	airfiltercode		varchar (9)	not null,
+	vehicle			varchar (10) 	not null,
+	vehicleapp		varchar (100)	not null,
+	unitprice		decimal (8,2)	not null,
+	qtyonhand		int (5)		not null,
+	constraint primary key (airfiltercode, vehicle)
+	);
+create table airconfilters(
+	airconfiltercode	varchar (9)	not null,
+	vehicle			varchar (10) 	not null,
+	vehicleapp		varchar (100)	not null,
+	unitprice		decimal (8,2)	not null,
+	qtyonhand		int (5)		not null,
+	constraint primary key (airconfiltercode, vehicle)
+	);
+create table oils(
+	oilcode			varchar (9)	not null,
+	company			varchar (10)	not null,
+	pdnmngd			varchar (50)	not null,
+	210L_Drum_L78		decimal (8,2),
+	200L_Drum_L73		decimal (8,2),
+	20L_Pall_L33		decimal (8,2),
+	5L_Can_L27_28		decimal (8,2),
+	4LCan_L25		decimal (8,2),
+	1L_Can_L19		decimal (8,2),
+	500ML_Bottle_L06	decimal (8,2),
+	350ML_Bootle		decimal (8,2),
+	250ML_Bootle_L04	decimal (8,2),
+	40ML_Sachet		decimal (8,2),
+	5L_Loose		decimal (8,2),
+	4L_Loose		decimal (8,2),
+	1L_Loose		decimal (8,2),
+	500ML_Loose		decimal (8,2),
+	250ML_Loose		decimal (8,2),
+	100ML_Loose		decimal (8,2),
+	50ML_Loose		decimal (8,2),
+	40ML_Loose		decimal (8,2),
+	30ML_Loose		decimal (8,2),
+	20ML_Loose		decimal (8,2),
+	10ML_Loose		decimal (8,2),
+	180KG			decimal (8,2),
+	170KG			decimal (8,2),
+	15KG			decimal (8,2),
+	500G			decimal (8,2),
+	250G			decimal (8,2),
+	100G			decimal (8,2),
+	constraint primary key (pdnmngd)
+	);
+create table servent(
+	serventid			varchar (5)	not null,
+	serventname		varchar (100)	not null,
+	serventdob		date,
+	serventnic			varchar (10),
+	serventfirstday		date,
+	attendance			boolean,
+	salary			decimal(8,2)              default 0.00,
+	constraint primary key (serventid)
+	);
+create table customer(
+	customerid		varchar (5)	not null,
+	customername		varchar (100)	not null,
+	customerdob		date,
+	customernic		varchar (10),
+	customervehicle		varchar (10) 	not null,
+	customervehicleap	varchar (50),
+	constraint primary key (customerid)
+	);
+create table service(
+	serviceid		varchar (5)	not null,
+	customerid		varchar (100),
+	date			date,
+	vehiclenum		varchar (10),
+	vehicle			varchar (10),
+	kmcode			varchar (10),
+	fuelfiltercode		varchar (9),
+	oilfiltercode		varchar (9),
+	airfiltercode		varchar (9),	
+	airconfiltercode	varchar (9),
+	pdnmngd			varchar (50),
+	packs			varchar (50),
+	constraint primary key (serviceid)
+	);
+create table reginfo(
+	admaintitle		varchar (10)	not null,
+	adminname		varchar (50)	not null,
+	telephone1		varchar (10),
+	telephone2		varchar (10),
+	telephone3		varchar (10),
+	constraint primary key (adminname)
+	);
+
+insert into oilfilters values('C-101','TOYOTA','Hiace, Coaster, Hilux, Land Cruiser (L, 2L, 3L, B, 2B) Dyna',825.00,0);
+insert into oilfilters values('C-102','TOYOTA','Corolla KE20, 25 (3K), Hiace Petrol (12R) Corona Carina 74-78',685.00,0);
+insert into oilfilters values('C-103','TOYOTA','Liteace (1C), Hiace 12R Corona, Corolla IC Engine',815.00,0);
+insert into oilfilters values('C-106','TOYOTA','Corolla KE55, 70 (3K, 4K) KE72 (5K), KE74, Corona/Carina AT150 (2AU)',660.00,0);
+insert into oilfilters values('C-107','TOYOTA','Coaster HB 30, 36 Land Cruiser, Dyna 2M Disel',4450.00,0);
+insert into oilfilters values('C-109','TOYOTA','Dyna WU75,85,95 (IW) 4000cc',990.00,0);
+insert into oilfilters values('C-110','TOYOTA','Corolla EE90 (2E), Tercel, Corsa, Corolla 2, Corona, Carina, Starlet EP71, 82 (4EF)',695.00,0);
+insert into oilfilters values('C-111','TOYOTA','Starlet NP70, 80, Tercel, Corsa, Corolla 2 NL 30, 40 (IN), Camry MCV21, Crown JZS',695.00,0);
+insert into oilfilters values('C-112','TOYOTA','Liteace CM35, CM5#, CM6#, Townace CR27 (2C)',1560.00,0);
+insert into oilfilters values('C-113','TOYOTA','Corolla AE91, AE101, 89.5 (5AFE), Caldin ST21SW, Camry ACV 30',695.00,0);
+insert into oilfilters values('C-114','TOYOTA','Crown UZS 143,157',695.00,0);
+insert into oilfilters values('C-115','TOYOTA','Hiace (3L) Toyoace / Dyna BU 61, 67, 84, 87 (14B)',1630.00,0);
+insert into oilfilters values('C-116','TOYOTA','Starlet NP90, Tercel, Corsa NL50 Corolla CE109v (2C) Diesel Liteace / Townace', 1630.00,0);
+insert into oilfilters values('C-117','TOYOTA','Cavalier',695.00,0);
+insert into oilfilters values('C-603','TOYOTA','Coaster (JO5C)',5575.00,0);
+insert into oilfilters values('C-607','TOYOTA','Dyna, Coaster (SO - 56, NO.4CT)',2495.00,0);
+insert into oilfilters values('C-608','TOYOTA','Toyoace / Dyna XZU Series',2475.00,0);
+insert into oilfilters values('O-110','TOYOTA','Toyota Dyna (1974)',960.00,0);
+insert into oilfilters values('O-116','TOYOTA','Hiacce (2TRFE) 2700cc, Hilux N210W',925.00,0);
+insert into oilfilters values('O-117','TOYOTA','New VITZ KSP 90',960.00,0);
+insert into oilfilters values('O-119','TOYOTA','Corolla AX10',1330.00,0);
+insert into oilfilters values('C-204','NISSAN','Civilian, Caball, GHYC240 (ED30)',950.00,0);
+insert into oilfilters values('C-205','NISSAN','Caravan, Pickup SD22 HOMY',935.00,0);
+insert into oilfilters values('C-206','NISSAN','Sunny Diesen CD17D11, 12, 13 Pulsar',775.00,0);
+insert into oilfilters values('C-206L','NISSAN','Sunny D11, 12, 14 Pulser Diesel CD17',660.00,0);
+insert into oilfilters values('C-207','NISSAN','Sunny B210, 310, B11, 12, 14 Presia R10, BluBird',675.00,0);
+insert into oilfilters values('C-207L','NISSAN','Sunny Diesel (CD 17), B12, 13, 14 Pulsar, Aveneir',625.00,0);
+insert into oilfilters values('C-209','NISSAN','Vanette, Largo, Pickup, Caravan E23, 24 (LD20) SD23, TD23',825.00,0);
+insert into oilfilters values('C-209L','NISSAN','Vanette, Largo, Pickup, Caravan E23, 24 Eng. SD25 TD23,27',840.00,0);
+insert into oilfilters values('C-211','NISSAN','March K10 (MA10) 82.10 - 92.10',650.00,0);
+insert into oilfilters values('C-212','NISSAN','UD Nissan RB 80 (FE6), Condor, Atlas (FE6T)',3775.00,0);
+insert into oilfilters values('C-214','NISSAN','Pickup (SD23), AMD21, 4-WD, AD21, AGD21',1970.00,0);
+insert into oilfilters values('C-216','NISSAN','Condor CL 80 (FE6, FE6T)',1970.00,0);
+insert into oilfilters values('C-217','NISSAN','Condor, CL, CM, CP',2395.00,0);
+insert into oilfilters values('C-218','NISSAN','March K11 (CG10 DE, 13 DE) Pulsar HN14',675.00,0);
+insert into oilfilters values('C-219','NISSAN','Civilian MGW40 (ED33)',1595.00,0);
+insert into oilfilters values('C-220','NISSAN','Atlas, Condor (FD42) BG3YH41',1315.00,0);
+insert into oilfilters values('C-222','NISSAN','Atlas, Condor, Pickup (TD23, 27)',890.00,0);
+insert into oilfilters values('C-223/309','NISSAN','Condor LK, LF, MF, MK (FE6) FUSD 6D14 6D15 FK, FM',3935.00,0);
+insert into oilfilters values('C-224','NISSAN','Sunny FB15, 001 Bluebird, EU14QG18DE',675.00,0);
+insert into oilfilters values('C-225','NISSAN','Cefiro A32, A33 Cedric VQ20DE, YQ25DE',675.00,0);
+insert into oilfilters values('C-226','NISSAN','Caravan, Homy E24, Vanette, Largo, Serena, Sunny Blue Bird (diesel) CD20, SB13, SB14',1375.00,0);
+insert into oilfilters values('O-203','NISSAN','Nissan Caravan E20, Eng SD 22',750.00,0);
+insert into oilfilters values('O-205','NISSAN','Suuny Diesel YD 22D, AD Van Pulsar',1635.00,0);
+insert into oilfilters values('O-206','NISSAN','Caravan BWE 20 (ZD30D), VWE 25',1650.00,0);
+insert into oilfilters values('O-253','NISSAN','Nissan Diesel Truck Eng.PE6H, PD6H',1710.00,0);
+insert into oilfilters values('O-255','NISSAN','Nissan Diesel RD10, PE6H',2070.00,0);
+insert into oilfilters values('O-256','NISSAN','Nissan Diesel RD0 PD6 Eng.CK50 RA50',1350.00,0);
+insert into oilfilters values('O-257A','NISSAN','Nissan Diesel Eng. FD6, FD67 Condor CM80, 90',1815.00,0);
+insert into oilfilters values('O-258','NISSAN','Nissan Diesel Eng. RE8, RD8, PE6T, CK31, 50, 51',2810.00,0);
+insert into oilfilters values('O-259A','NISSAN','Nissan Diesel PE6 PE6T CK31, 46',1700.00,0);
+insert into oilfilters values('O-264','NISSAN','UD Nissan PE6T, CV 450',4355.00,0);
+insert into oilfilters values('C-302','MITSUBISHI','Delica L300, Pajero (AD55) DieselLancer Diesel C14 (4D65)',795.00,0);
+insert into oilfilters values('C-303','MITSUBISHI','Lancer A 72, 172 C11, C12 (4G33, G11B, G12B) Galant A161',710.00,0);
+insert into oilfilters values('C-305','MITSUBISHI','Canter, Rosa by Pass (4D30, 31)',890.00,0);
+insert into oilfilters values('C-306','MITSUBISHI','Pickup L200 Delica L300, Pajero (4D56) 4D56T',1675.00,0);
+insert into oilfilters values('C-308','MITSUBISHI','Lancer CM 8A (4D68-T)',2025.00,0);
+insert into oilfilters values('C-312','MITSUBISHI','Diamante, Pajero (6G72)',650.00,0);
+insert into oilfilters values('C-313','MITSUBISHI','Pajero (4m40) 2500, 2800 Canter, Rosa4D34T',2150.00,0);
+insert into oilfilters values('C-315','MITSUBISHI','Delica PD800 (4M40T) Canter 50E (4M51)',3225.00,0);
+insert into oilfilters values('C-316','MITSUBISHI','Pajero 10 (4G64) 2400 cc (6G72) 3000 c, V25W, V45M',695.00,0);
+insert into oilfilters values('C-317','MITSUBISHI','Pajero Mini, Minica, Mini Cab',945.00,0);
+insert into oilfilters values('C-407','MITSUBISHI','Delica T120 (4G41, 4G42) Lancer A72 (4G33)',725.00,0);
+insert into oilfilters values('C-415','MITSUBISHI','Lancer, Mirage G13B, G15B, CB2A, 3A, CK2A, 3A, CS2A, 3A Pajero I',675.00,0);
+insert into oilfilters values('C-503','MITSUBISHI','Canter, Rosa BE/FE (4D30, 31) FE/BE 211, 311, 431',1055.00,0);
+insert into oilfilters values('O-306','MITSUBISHI','Jeep J24, 44 4DR5, 4DR51',685.00,0);
+insert into oilfilters values('O-308','MITSUBISHI','Rosa B360 (6DR5), B210 (4DR5), Canter (4D30)',790.00,0);
+insert into oilfilters values('O-352A','MITSUBISHI','Fuso 6DC2, 8DC2 B80 90',2100.00,0);
+insert into oilfilters values('O-353','MITSUBISHI','Fuso Truck',1195.00,0);
+insert into oilfilters values('O-355','MITSUBISHI','Fuso 6D14, 6DS7, 6D15, F1C Series MK Series',1020.00,0);
+insert into oilfilters values('O-358','MITSUBISHI','Fuso 6D14T FK\MK Series',2840.00,0);
+insert into oilfilters values('O-359','MITSUBISHI','Fuso ^D22 8DC8 8DC9 MM, MP',3620.00,0);
+insert into oilfilters values('O-360','MITSUBISHI','Fuso FV Series 8DC9 Truck',5525.00,0);
+insert into oilfilters values('C-304','MAZDA','Familia BD1031, 1051 Laser (E3, E5)',675.00,0);
+insert into oilfilters values('C-307','MAZDA','Familia 323 Diesel 1700 (PN) Bongo, RF Diesel',695.00,0);
+insert into oilfilters values('C-405','MAZDA','Bobgo S2 Diesel BA2, 3000HA Diesel 3500SL',695.00,0);
+insert into oilfilters values('C-406','MAZDA','Bongo Petrol 1600, Isuzu Gemini',675.00,0);
+insert into oilfilters values('C-409A','MAZDA','Truck Titan XA2500, HA3000, SL3500',1075.00,0);
+insert into oilfilters values('C-410','MAZDA','Titan 2500 XA Diesel',1335.00,0);
+insert into oilfilters values('C-411','MAZDA','Titan Diesel TF, HA, SL',1680.00,0);
+insert into oilfilters values('C-412','MAZDA','Bongo Diesel RF, R2 SR29Y SR2 AV',1650.00,0);
+insert into oilfilters values('C-416','MAZDA','Familia 323, BG7B (PN) 1700 Diesel',1615.00,0);
+insert into oilfilters values('C-417','MAZDA','Mazda Tribute 3000 Eng, AJ Eng',860.00,0);
+insert into oilfilters values('C-418','MAZDA','Mazda Atenza Six Tribute L3 Eng',760.00,0);
+insert into oilfilters values('C-506','MAZDA','Bongo Diesel 323, D Laser D, Brawny',1285.00,0);
+insert into oilfilters values('C-522','MAZDA','Titan WGZ4T (4HF1, 4HG1)',3595.00,0);
+insert into oilfilters values('C-901','MAZDA','Familia, Laser, Festiva (E3 E5)',665.00,0);
+insert into oilfilters values('O-406','MAZDA','Mazda Atenza Six, Tribute L3 Eng',1370.00,0);
+insert into oilfilters values('C-307','ISUZU','Fargo WFR62 4fg1',695.00,0);
+insert into oilfilters values('C-502','ISUZU','Fargo WER51 (4FCI) WFR53 (4FDI)',850.00,0);
+insert into oilfilters values('C-504','ISUZU','ELF 150, 250 (C240)',1120.00,0);
+insert into oilfilters values('C-506','ISUZU','ELF 350 4BDIT NPR 59, 61 EFF450BBG NPG61',1285.00,0);
+insert into oilfilters values('C-507','ISUZU','Trooper UBS52 4WD C223',2395.00,0);
+insert into oilfilters values('C-508A','ISUZU','ELF 250, 350 NHR, NPG (4BA1, 4BC2, 4BD1T, 4BE2)',1900.00,0);
+insert into oilfilters values('C-509A','ISUZU','Forward Trucks FSR12, FSD12 (6BG1, BG1T, GBD1, 7BG1)',2200.00,0);
+insert into oilfilters values('C-510A','ISUZU','Forward Trucks FSR12 FSD12 (6BG1, BG1T, GBD1, 7BG1)',2795.00,0);
+insert into oilfilters values('C-511A','ISUZU','Forward Trucks FTR13 (6SA1)',6555.00,0);
+insert into oilfilters values('C-512','ISUZU','ELF15D, 4JA1, 4JB1, NHR54, 55, NKR55, TROOPER UBS 55 PICKUP',780.00,0);
+insert into oilfilters values('C-516/525','ISUZU','NKR (GHE1) Forward FRR32, FTR',5330.00,0);
+insert into oilfilters values('C-517','ISUZU','Fargo (4EG1) WER62',1470.00,0);
+insert into oilfilters values('C-518/526','ISUZU','NKR, NPR66 (4HR1) 4JG-2, 4HT-1, 4HK-1',3340.00,0);
+insert into oilfilters values('C-519','ISUZU','ELF 250 NKR 58A (4BE1) 4HKIT, 4HG-1',1875.00,0);
+insert into oilfilters values('C-521','ISUZU','Trooper UBS 69',2110.00,0);
+insert into oilfilters values('C-522','ISUZU','Mazda Titan WGJ4T 4600 4HF, 4HG1',3595.00,0);
+insert into oilfilters values('C-523','ISUZU','Isuzu Forward 6BG-IT ESR12, EXR12',4145.00,0);
+insert into oilfilters values('C-527','ISUZU','Isuzu NHR, NHS, NJS85',950.00,0);
+insert into oilfilters values('C-528','ISUZU','NHR 69, NKR 69, WHR 69 (4JG2)',1710.00,0);
+insert into oilfilters values('C-805','ISUZU','Gemini JT600 641 (4EE1, 4EC1)',695.00,0);
+insert into oilfilters values('O-502A','ISUZU','ELF150 (C190)',625.00,0);
+insert into oilfilters values('O-503','ISUZU','ELF250 TLD C190 G240',775.00,0);
+insert into oilfilters values('O-504','ISUZU','ELF350, Journey Wide 4 BA1, 4BD1',785.00,0);
+insert into oilfilters values('O-553','ISUZU','Truck and Bus 6BB1, C240, KAD52, BLD20, 30',895.00,0);
+insert into oilfilters values('O-554','ISUZU','Truck and Bus DA120, DA640 TXD 50, 70',1130.00,0);
+insert into oilfilters values('O-555','ISUZU','Truck D120, 640 TXD 50E, 70E',1690.00,0);
+insert into oilfilters values('O-556','ISUZU','Truck and Bus 10PAI SPZ, SSZ',4340.00,0);
+insert into oilfilters values('O-562','ISUZU','Journey Redline (4BEZ) BL36, 83.7 - 83.11',1540.00,0);
+insert into oilfilters values('O-563','ISUZU','Truck CV, CX, CY, CXG, CXH, CXZ, EXR',2050.00,0);
+insert into oilfilters values('O-564','ISUZU','Truck CV, CX, CXG17, CXM18, CXW17, EXR17',1995.00,0);
+insert into oilfilters values('O-566A','ISUZU','Truck CVR, CXH, EXR',6665.00,0);
+insert into oilfilters values('O-568','ISUZU','Truck CV, CX, GIGA, new CTB Bus',1195.00,0);
+insert into oilfilters values('O-573','ISUZU','Bus',8485.00,0);
+insert into oilfilters values('O-575','ISUZU','Truck CXM 50 (6WA)',5325.00,0);
+insert into oilfilters values('O-577','ISUZU','Truck CV, CX, GIGA',3995.00,0);
+insert into oilfilters values('O-578','ISUZU','Giga CYZ, CYW',5610.00,0);
+insert into oilfilters values('O-579','ISUZU','GIGA CXG, CVR, CXZ',1395.00,0);
+insert into oilfilters values('O-580','ISUZU','GIGA (10PEI)',5025.00,0);
+insert into oilfilters values('O-581','ISUZU','Isuzu GIGA CXG, CVR, CXZ',5025.00,0);
+insert into oilfilters values('O-582','ISUZU','Journey, Truck (6BG1) (6HH1) (6HA1)',2575.00,0);
+insert into oilfilters values('O-584','ISUZU','ELF NKR, NHR, NPR, 4JJ1',2185.00,0);
+insert into oilfilters values('C-601A','HINO','Truck/ Bus FC170, FC3W, RT174 (HO7C, WO6E)',2065.00,0);
+insert into oilfilters values('C-602A','HINO','Rainbow (HO6C, HO7D, JO8C) T',2065.00,0);
+insert into oilfilters values('C-604','HINO','Hino, Toyoace, Dyna',2065.00,0);
+insert into oilfilters values('O-605','HINO','Truck/ Bus FH, EM100, FD160 (HO6C)',2065.00,0);
+insert into oilfilters values('O-608','HINO','Dutro - XZU & Toyoace / Dyna',2065.00,0);
+insert into oilfilters values('O-609','HINO','Rainbow (HOTC) RU',2065.00,0);
+insert into oilfilters values('O-611','HINO','Bus EK 200 (Primary Oil Filter',2065.00,0);
+insert into oilfilters values('O-619','HINO','Truck/ Bus EX100 FR EF550 EN',2065.00,0);
+insert into oilfilters values('O-620','HINO','Truck/ Bus',2065.00,0);
+insert into oilfilters values('O-621','HINO','Truck/ Bus',2065.00,0);
+insert into oilfilters values('C-307','HONDA','Civic D13B, D15B, EG8, EK3, Accord F18A, F20A',695.00,0);
+insert into oilfilters values('C-804','HONDA','Civic AJ, AH, AG 1300, 1500 (EV, EW)',700.00,0);
+insert into oilfilters values('C-806','HONDA','Grand Civic 16 Balve 1300, 1500 EFZ',695.00,0);
+insert into oilfilters values('C-807','HONDA','Accord Inspire',750.00,0);
+insert into oilfilters values('C-808','HONDA','Acty 600 PGM',695.00,0);
+insert into oilfilters values('C-809','HONDA','Civic es1, es2 (D15B)',695.00,0);
+insert into oilfilters values('C-703A','DAIHATSU','Charade G10, G11',630.00,0);
+insert into oilfilters values('C-932','DAIHATSU','Cuore, Charade, Terios G10, G11, G30, G100, G101, 102, G200',665.00,0);
+insert into oilfilters values('C-931','SUZUKI','Vitara G16A HA20A Eng.',665.00,0);
+insert into oilfilters values('C-932','SUZUKI','ALTO SS80, CR22S, Maruti 800',665.00,0);
+insert into oilfilters values('C-933','SUZUKI','Vitara G16A J20A',695.00,0);
+insert into oilfilters values('C-902','SUBARU','Legacy BC3, BD2, BD4 Impreza, GG2, GG3, EJ15 Eng.',665.00,0);
+insert into oilfilters values('C-808','SUBARU','R2 660cc',695.00,0);
+insert into oilfilters values('C-010','AUDI','Volkswagen, Mazd Tribute YF Eng, 2000 petrol',780.00,0);
+insert into fuelfilters values('FC-109','TOYOTA','Corolla KP61, KE30, 50',355.00,0);
+insert into fuelfilters values('FC-129','TOYOTA','Corolla KE72, 74v',375.00,0);
+insert into fuelfilters values('FC-130','TOYOTA','Liteace KR27, 42',375.00,0);
+insert into fuelfilters values('FC-146','TOYOTA','Corolla AE80, 81, EE80, 90 Carina At140, 150, 170',380.00,0);
+insert into fuelfilters values('FC-147','TOYOTA','Hiace LH20, 30(L)',750.00,0);
+insert into fuelfilters values('FC-155','TOYOTA','Camry / Vista EF2',3135.00,0);
+insert into fuelfilters values('FC-158','TOYOTA','Diesel Corolla, Corona, Carina, Starlet, Liteae, Townae, Hiace',2445.00,0);
+insert into fuelfilters values('FC-174','TOYOTA','Dyna, Coaster (IW) WU75, 90, 95',860.00,0);
+insert into fuelfilters values('FC-175','TOYOTA','Hilux LN 30,40, 55, 58 (L,2L) Land Cruiser (2H)',680.00,0);
+insert into fuelfilters values('FC-183','TOYOTA','Corolla EE101, 102, 103, 104, 111, AE100, 110',5025.00,0);
+insert into fuelfilters values('FC-184','TOYOTA','Liteace CR41, 51, Corona, Carina, Caldina, Hiace (5L, Kz)',2535.00,0);
+insert into fuelfilters values('FC-185','TOYOTA','Crown UBS 157 - 1UZFE',4030.00,0);
+insert into fuelfilters values('FC-186','TOYOTA','Crown GS 130, 151, JZS Townace (petrol) mark ii JZK 100',5025.00,0);
+insert into fuelfilters values('F-193','TOYOTA','Hiace KDH222B, Hilux KUM15L',1075.00,0);
+insert into fuelfilters values('FC-205','NISSAN','Dutsan Sunny 1200 A12 eng 70-75',535.00,0);
+insert into fuelfilters values('FC-208','NISSAN','Civilian',790.00,0);
+insert into fuelfilters values('FC-210','NISSAN','Sunny B210, 310',375.00,0);
+insert into fuelfilters values('FC-214','NISSAN','Vanette C120, Largo WEC120 (LD20), Caravan (SD23)',870.00,0);
+insert into fuelfilters values('FC-224','NISSAN','Condor',860.00,0);
+insert into fuelfilters values('FC-226','NISSAN','Pickup, Caravan (TD23, 27), Vanette C22',2445.00,0);
+insert into fuelfilters values('FC-227','NISSAN','Vanette, Pickup, Caravan (LD120) C120',2730.00,0);
+insert into fuelfilters values('FC-231','NISSAN','Sunny B12, B13, (GA13) 1400, 1500, 16V',695.00,0);
+insert into fuelfilters values('FC-232','NISSAN','Atlas, Condor CK, CM, CL, LK, LF (FE6, 6T)',2285.00,0);
+insert into fuelfilters values('FC-234','NISSAN','Caravan VRG24, Pickup AMD 21 (TD27)',2720.00,0);
+insert into fuelfilters values('FC-235','NISSAN','Caravan VRG24, Pickup AMD 21 (TD27)',2915.00,0);
+insert into fuelfilters values('FC-236','NISSAN','March K11, HK11, Pulsar FN14, 15 FB14, 15',2230.00,0);
+insert into fuelfilters values('FC-237','NISSAN','Pulsar, Sunny, Primerma Presea',2295.00,0);
+insert into fuelfilters values('FC-239','NISSAN','Condor LK262 (MD92) MK252, (FE6)',2650.00,0);
+insert into fuelfilters values('F-203','NISSAN','Caravan, Elf250',520.00,0);
+insert into fuelfilters values('F-206A','NISSAN','UD Nisan (PE6 T.)',925.00,0);
+insert into fuelfilters values('F-207','NISSAN','UD Nissan (RD 8)',1095.00,0);
+insert into fuelfilters values('F-240','NISSAN','UD Nissan CZ, CX, CW, RG8, RH8',3445.00,0);
+insert into fuelfilters values('FC-313','MITSUBISHI','Lancer, Delica, L300',395.00,0);
+insert into fuelfilters values('FC-317','MITSUBISHI','Canter, Rosa (4D30, 31)',975.00,0);
+insert into fuelfilters values('FC-318','MITSUBISHI','Canter, Rosa (4D32)',1025.00,0);
+insert into fuelfilters values('FC-319','MITSUBISHI','Fuso (6D15, 41)',1155.00,0);
+insert into fuelfilters values('FC-321','MITSUBISHI','Pajero, Delica L300, Gemini Diesel',2445.00,0);
+insert into fuelfilters values('FC-322','MITSUBISHI','Fuso, 10.Ton (8DC)',2100.00,0);
+insert into fuelfilters values('FC-326','MITSUBISHI','Lancer Diesel',1170.00,0);
+insert into fuelfilters values('FC-328','MITSUBISHI','Delica L300, Lancer CG1A, C12 Wagon, C52A',430.00,0);
+insert into fuelfilters values('FC-331','MITSUBISHI','Fuso Truck/ Bus, (6D40, 8M20)',4495.00,0);
+insert into fuelfilters values('FC-332','MITSUBISHI','Rosa 4900cc',2795.00,0);
+insert into fuelfilters values('FC-334','MITSUBISHI','Canter (4D33)',1575.00,0);
+insert into fuelfilters values('FC-335','MITSUBISHI','Fuso FK 61F - 6M60, 6M61',2150.00,0);
+insert into fuelfilters values('F-308','MITSUBISHI','Jeep J24 44 36',485.00,0);
+insert into fuelfilters values('F-309','MITSUBISHI','Canter, Rosa (4D31T, 6DR5)',575.00,0);
+insert into fuelfilters values('F-314','MITSUBISHI','Rosa, Canter, Fuso (6D14, 6DR5)',790.00,0);
+insert into fuelfilters values('F-315','MITSUBISHI','Truck (8DC8,9) FT, FU, FV, FS (6D22)',925.00,0);
+insert into fuelfilters values('F-336','MITSUBISHI','Fuso Bus 4M 50T, ME17DF, MK17DF, MK26F, MP217-Truck-FK61R, 6M60T',4675.00,0);
+insert into fuelfilters values('F-337','MITSUBISHI','Canter FB 70B, FE 70',4335.00,0);
+insert into fuelfilters values('FC-208A','ISUZU','ELF 250',810.00,0);
+insert into fuelfilters values('FC-509','ISUZU','FARGO WER50 (4FC1, 4FD1, 4FG1)',1150.00,0);
+insert into fuelfilters values('FC-510','ISUZU','FARGO',1195.00,0);
+insert into fuelfilters values('FC-511','ISUZU','ELF N',895.00,0);
+insert into fuelfilters values('F-503','ISUZU','ELF350, JOURNEY',775.00,0);
+insert into fuelfilters values('F-505','ISUZU','TXD TRUCK',560.00,0);
+insert into fuelfilters values('F-507','ISUZU','V10 TRUCK',1575.00,0);
+insert into fuelfilters values('FC-406','MAZDA','Titan (HA) SL',900.00,0);
+insert into fuelfilters values('FC-408','MAZDA','Familia 323, BD, BF, Bongo Petrol',425.00,0);
+insert into fuelfilters values('FC-409','MAZDA','Bongo SSF8V, Brawny SRZAV (r2)',2540.00,0);
+insert into fuelfilters values('FC-410','MAZDA','New Mazda Bongo-Diesel',3390.00,0);
+insert into fuelfilters values('FC-415','MAZDA','Mazda 626, 2000EGI',3575.00,0);
+insert into fuelfilters values('FC-417','MAZDA','Mazda A3(Fuel Injection Filter)',5750.00,0);
+insert into fuelfilters values('FC-607','HINO','Truck/ Bus',860.00,0);
+insert into fuelfilters values('FC-608A','HINO','Tractor K13C',3575.00,0);
+insert into fuelfilters values('FC-609','HINO','Bus JO Series',1960.00,0);
+insert into fuelfilters values('F-605','HINO','Truck/ Bus EM100, EK100',825.00,0);
+insert into fuelfilters values('F-606','HINO','Truck/ Bus EF550, F17D, EV700, EF750D, EK200',1625.00,0);
+insert into fuelfilters values('FC-805','HONDA','Grand CIVIC EFZ, 1300, 1500',415.00,0);
+insert into fuelfilters values('FC-814','HONDA','Civic EFZ (D13B, 15B)',415.00,0);
+insert into fuelfilters values('FC-816','HONDA','Civic EF3',3225.00,0);
+insert into fuelfilters values('FC-818','HONDA','Civic EG8, D15B',1435.00,0);
+insert into fuelfilters values('FC-819','HONDA','Civic EK2, CRV-RD1, Accord-CD3,4,5,6, Acty-H H 3,4',3195.00,0);
+insert into fuelfilters values('FC-707A','DAIHATSU','Jeep, Rocky F50, F70',855.00,0);
+insert into fuelfilters values('FC-713','DAIHATSU','Charade G30, G101',2795.00,0);
+insert into fuelfilters values('FC-716','DAIHATSU','Mira Cuore L500',3195.00,0);
+insert into fuelfilters values('FC-717','DAIHATSU','HI-Jet EF',1175.00,0);
+insert into fuelfilters values('FC-417','SUZUKI','Suzuki Aerio (Fuel Injection Filter) / Swift',5750.00,0);
+insert into fuelfilters values('FC-934','SUZUKI','Caltus G10-1000CC, G13A, 1300CC',445.00,0);
+insert into fuelfilters values('FC-938','SUZUKI','S40, CA72V',425.00,0);
+insert into fuelfilters values('FC-941','SUZUKI','Suzuki Every Wagon',495.00,0);
+insert into fuelfilters values('FC-942','SUZUKI','Suzuki Every F6A',790.00,0);
+insert into fuelfilters values('FC-945','SUZUKI','Suzuki Alto F6A 997)',760.00,0);
+insert into fuelfilters values('FC-947','SUZUKI','Every 91.9 - 98.12',3005.00,0);
+insert into fuelfilters values('FC-948','SUZUKI','Suzuki Aerio/ Swift',5750.00,0);
+insert into AirFilters values('A-108','TOYOTA','Corolla MKII,Crown','1300.00',0);
+insert into AirFilters values('A-109','TOYOTA','Corolla,Liteace,Townace(4k,5K)Petrol','825.00',0);
+insert into AirFilters values('A-117','TOYOTA','Land Cruiser BJ40,43,44,Dyna(B,2B)','1935.00',0);
+insert into AirFilters values('A-120','TOYOTA','Coaster','1400.00',0);
+insert into AirFilters values('A-123','TOYOTA','Hiace RH(12R,11,16)','1195.00',0);
+insert into AirFilters values('A-135','TOYOTA','KE72,74','795.00',0);
+insert into AirFilters values('A-136','TOYOTA','Dyna,Coaster(3B)','1675.00',0);
+insert into AirFilters values('A-137','TOYOTA','Hiace LH20,30,40,60,51,61','1915.00',0);
+insert into AirFilters values('A-138','TOYOTA','Corona,Carina AT140','1150.00',0);
+insert into AirFilters values('A-139V','TOYOTA','Pickup Hilux,LN30,36,40,46,50,60,65','1610.00',0);
+insert into AirFilters values('A-140','TOYOTA','Land Cruiser EJ71,78','1895.00',0);
+insert into AirFilters values('A-143','TOYOTA','Liteace,Townace CM20,30,50,60,CR26,27,28(1C,2C)','1870.00',0);
+insert into AirFilters values('A-145','TOYOTA','Tercel Turbo Diesel NL30,40','2425.00',0);
+insert into AirFilters values('A-147','TOYOTA','Dyna,Coaster,Land Cruiser BJ40,70','2195.00',0);
+insert into AirFilters values('A-149','TOYOTA','Pickup Hilux LN80,85,100,106,130(3L)','2010.00',0);
+insert into AirFilters values('A-150','TOYOTA','Starlet Diesel(1-N)1970-80','1910.00',0);
+insert into AirFilters values('A-156A','TOYOTA','Dyna BU61((11B)','3670.00',0);
+insert into AirFilters values('A-157A','TOYOTA','Corolla EE90,96,80','1730.00',0);
+insert into AirFilters values('A-159A','TOYOTA','Liteace,Townace(5k-J)Petrol','2645.00',0);
+insert into AirFilters values('A-160','TOYOTA','Hiace LH80 LWB','1600.00',0);
+insert into AirFilters values('A-161G','TOYOTA','Corolla,Corona,Carina','2170.00',0);
+insert into AirFilters values('A-162G','TOYOTA','Corolla AE91,1500(5AFE)EF1','1910.00',0);
+insert into AirFilters values('A-163A','TOYOTA','Corolla','1725.00',0);
+insert into AirFilters values('A-164A','TOYOTA','Corolla EE107,108,3E','1745.00',0);
+insert into AirFilters values('A-166','TOYOTA','Toyoace/Dyna y211,3Y Eng','1640.00',0);
+insert into AirFilters values('A-167','TOYOTA','Crown LS130','2210.00',0);
+insert into AirFilters values('A-169','TOYOTA','Starlet','2330.00',0);
+insert into AirFilters values('A-170','TOYOTA','Hiace(3L)','2050.00',0);
+insert into AirFilters values('A-171','TOYOTA','Liteace CR41,42,51,5(2C,3C)','2210.00',0);
+insert into AirFilters values('A-172','TOYOTA','Soluna','2240.00',0);
+insert into AirFilters values('A-173V','TOYOTA','Cresta,5YZ -FE','2375.00',0);
+insert into AirFilters values('A-174','TOYOTA','Windom,Harrier SSFE,IMZFE,','2520.00',0);
+insert into AirFilters values('A-176','TOYOTA','Corolla EE101,EE103,EE111','2040.00',0);
+insert into AirFilters values('A-177','TOYOTA','Corolla AE100','2365.00',0);
+insert into AirFilters values('A-179','TOYOTA','Starlet EP91','1825.00',0);
+insert into AirFilters values('A-180','TOYOTA','Corona(2L) MKII','3185.00',0);
+insert into AirFilters values('A-181','TOYOTA','Camry,Vista CV30(2CT)','2235.00',0);
+insert into AirFilters values('A-182A','TOYOTA','Liteace,Townace(petrol)(5K,7K)','2210.00',0);
+insert into AirFilters values('A-183','TOYOTA','Liteace(2C,3C)','2325.00',0);
+insert into AirFilters values('A-184','TOYOTA','Hiace KZH 100 (1KZ) 3000cc Diesel','2650.00',0);
+insert into AirFilters values('A-185','TOYOTA','Hiace Regius,LH43','3195.00',0);
+insert into AirFilters values('A-186','TOYOTA','Hiace Regius','3510.00',0);
+insert into AirFilters values('A-188','TOYOTA','Coaster,Toyoace,Dya HDB-51','4225.00',0);
+insert into AirFilters values('A-189','TOYOTA','Chaser,MKII (1GFE) ','2235.00',0);
+insert into AirFilters values('A-190','TOYOTA','Land Cruiser KZJ90,Hilux Toyoace (4B)','3510.00',0);
+insert into AirFilters values('A-191','TOYOTA','Hiace (5-L)','3300.00',0);
+insert into AirFilters values('A-192','TOYOTA','Verossa,Altessa','2995.00',0);
+insert into AirFilters values('A-193','TOYOTA','Prius NHW 10,11','2475.00',0);
+insert into AirFilters values('A-194','TOYOTA','HILUXSURF','2685.00',0);
+insert into AirFilters values('A-195','TOYOTA','RAV4CA25W,CA26W','2450.00',0);
+insert into AirFilters values('A-196','TOYOTA','VItZSCP10,Platz SCP11','2030.00',0);
+insert into AirFilters values('A-197','TOYOTA','VItZ Platz ncp10,11,12,13,15,16','2030.00',0);
+insert into AirFilters values('A-199','TOYOTA','Harrier,Camry/Vista','2745.00',0);
+insert into AirFilters values('A-1001','TOYOTA','RAV4,Emina','2675.00',0);
+insert into AirFilters values('A-1002','TOYOTA','Land Cruiser 3000cc Hilux','4080.00',0);
+insert into AirFilters values('A-1003','TOYOTA','Corolla 1300,1500 NZE120,121,Avensis,Allion,Allex,Wish Willvs','2600.00',0);
+insert into AirFilters values('A-1004','TOYOTA','Coaster BU400,410','5680.00',0);
+insert into AirFilters values('A-1005','TOYOTA','Toyoace LY220','3375.00',0);
+insert into AirFilters values('A-1006','TOYOTA','HILUXRZN','3960.00',0);
+insert into AirFilters values('A-1007','TOYOTA','Succeed,NLP51V Diesel','3100.00',0);
+insert into AirFilters values('A-1009','TOYOTA','Dyna,Coaster,Toyoace,XZU Series','4440.00',0);
+insert into AirFilters values('A-1011','TOYOTA','Hilux,Land Cruiser,Prado 1GR-FE Patrol','3225.00',0);
+insert into AirFilters values('A-1013','TOYOTA','Ractis NCP Series','2875.00',0);
+insert into AirFilters values('A-1015','TOYOTA','RAV4','3550.00',0);
+insert into AirFilters values('A-1016','TOYOTA','Rush','3050.00',0);
+insert into AirFilters values('A-1017','TOYOTA','Hiace Diesel 2KD','3435.00',0);
+insert into AirFilters values('A-1018','TOYOTA','Land Cruiser 100,1HD-FTE','6210.00',0);
+insert into AirFilters values('A-1019','TOYOTA','Camry 2400,ACV 45-2AZ','3725.00',0);
+insert into AirFilters values('A-1021','TOYOTA','Land Cruiser 70,VDJ70','4245.00',0);
+insert into AirFilters values('A-1023','TOYOTA','Hiace 1KD-FTV 3000','3750.00',0);
+insert into AirFilters values('A-206AV','NISSAN','Pickup','1075.00',0);
+insert into AirFilters values('A-215V','NISSAN','Sunny B210','925.00',0);
+insert into AirFilters values('A-226V','NISSAN','Vanette Diesel','1125.00',0);
+insert into AirFilters values('A-243V','NISSAN','Sunny Diesel(CD17),Sunny FB15','1350.00',0);
+insert into AirFilters values('A-246V','NISSAN','Bluebird 412','1270.00',0);
+insert into AirFilters values('A-247V','NISSAN','March K10-82-92-10','1025.00',0);
+insert into AirFilters values('A-249V','NISSAN','Pulser,Bluebird E15E','1340.00',0);
+insert into AirFilters values('A-265V','NISSAN','Truck/Bus','3760.00',0);
+insert into AirFilters values('A-267S','NISSAN','Pajero Intercooler','3165.00',0);
+insert into AirFilters values('A-268V','NISSAN','Civilian,Atlas','2565.00',0);
+insert into AirFilters values('A-270V','NISSAN','Civilian (TD42,FD35)92-7','3985.00',0);
+insert into AirFilters values('A-271','NISSAN','UD Nissan DumpTruck (RF8,WD153,300','3900.00',0);
+insert into AirFilters values('A-273V','NISSAN','Atlas,Condor,LK250,MK250,PW251','8740.00',0);
+insert into AirFilters values('A-274V','NISSAN','Condor (FD6,FE6) CL,CM 86,87,88,89','5970.00',0);
+insert into AirFilters values('A-275V','NISSAN','Atlas,Condor','3825.00',0);
+insert into AirFilters values('A-276V','NISSAN','Condor (FE6,6T)','13040.00',0);
+insert into AirFilters values('A-279V','NISSAN','UD Nissan Truck CK Series(RF10)','14500.00',0);
+insert into AirFilters values('A-282V','NISSAN','Condor MK Series','13725.00',0);
+insert into AirFilters values('A-2001V','NISSAN','Vanette,Serena','2965.00',0);
+insert into AirFilters values('A-2002V','NISSAN','Patrol (TD42) Safari','1765.00',0);
+insert into AirFilters values('A-2003V','NISSAN','Sunny B14','1535.00',0);
+insert into AirFilters values('A-2004V','NISSAN','Safari TD 42T','2365.00',0);
+insert into AirFilters values('A-2005V','NISSAN','Caravan AVE50 QD Terrano PR50','2175.00',0);
+insert into AirFilters values('A-2006V','NISSAN','Pickup','2015.00',0);
+insert into AirFilters values('A-2007V','NISSAN','Terrano (TD27T Eng)','2580.00',0);
+insert into AirFilters values('A-2008V','NISSAN','Caravan BWE 25(ZD30D)','1950.00',0);
+insert into AirFilters values('A-2009V','NISSAN','March K12 BK12','1610.00',0);
+insert into AirFilters values('A-2011V','NISSAN','Tiida HR15 DE,C11','1365.00',0);
+insert into AirFilters values('A-565','NISSAN','Nissan UD Truck,Crane','3980.00',0);
+insert into AirFilters values('A-527','NISSAN','Nissan Atlas,Condor 4JJ1','4080.00',0);
+insert into AirFilters values('AN-202V','NISSAN','March K11,Honda Civic KEZ','1680.00',0);
+insert into AirFilters values('AN-203V','NISSAN','Cedric,Gloria,Laurel(RD28)','2165.00',0);
+insert into AirFilters values('AN-210V','NISSAN','Vanette(LD20)','1850.00',0);
+insert into AirFilters values('AN-211V','NISSAN','Caravan(TD27)','2070.00',0);
+insert into AirFilters values('AN-212SV','NISSAN','Caravan E24','3225.00',0);
+insert into AirFilters values('AN-216V','NISSAN','Sunny B13 (GA13 DS,GA 15 DS) Presea R10','1980.00',0);
+insert into AirFilters values('AN-218V','NISSAN','Pickup E249(TD27)','3005.00',0);
+insert into AirFilters values('AN-219V','NISSAN','Avenir SW10,CD20','2810.00',0);
+insert into AirFilters values('AN-220V','NISSAN','Bluebird EU12 (SR18DJ)','2690.00',0);
+insert into AirFilters values('AN-221V','NISSAN','March K11 HK11','1610.00',0);
+insert into AirFilters values('A-142S','MITSUBISHI','Pickup L200,Pajero','2675.00',0);
+insert into AirFilters values('A-303','MITSUBISHI','Lancer Box','1265.00',0);
+insert into AirFilters values('A-310','MITSUBISHI','Rosa (4DR5)','2245.00',0);
+insert into AirFilters values('A-320','MITSUBISHI','Rosa (4D30)','2060.00',0);
+insert into AirFilters values('A-324','MITSUBISHI','Lancer,Mirage','1260.00',0);
+insert into AirFilters values('A-327','MITSUBISHI','Delica L300 (Petrol)','1340.00',0);
+insert into AirFilters values('A-328','MITSUBISHI','Pajero Old Model','2395.00',0);
+insert into AirFilters values('A-330','MITSUBISHI','Rosa MMC (4D31)','2425.00',0);
+insert into AirFilters values('A-331','MITSUBISHI','Lancer GLX','1430.00',0);
+insert into AirFilters values('A-334S','MITSUBISHI','Delica L300 (4D55)','2495.00',0);
+insert into AirFilters values('A-336','MITSUBISHI','Lancer Diesel (4D65) C14,C14A','2415.00',0);
+insert into AirFilters values('A-343','MITSUBISHI','Delica L300,PO2V,3V Petrol','2185.00',0);
+insert into AirFilters values('A-344','MITSUBISHI','Lancer,Galant 1800,(G37B)','1840.00',0);
+insert into AirFilters values('A-346','MITSUBISHI','Delica(GG72) Montero, Sport','2090.00',0);
+insert into AirFilters values('A-347','MITSUBISHI','Lancer C61,CB5A','1995.00',0);
+insert into AirFilters values('A-348','MITSUBISHI','Pajero Mini,HA42,47','2525.00',0);
+insert into AirFilters values('A-349','MITSUBISHI','Lancer(4G15) 1500 4G91','2575.00',0);
+insert into AirFilters values('A-350','MITSUBISHI','Rosa B360 (6DR5),Fuso FK115,(6D14)','4065.00',0);
+insert into AirFilters values('A-352S','MITSUBISHI','Fuso MK116 (6D15)','5510.00',0);
+insert into AirFilters values('A-353S','MITSUBISHI','Fuso Truck,(Nissan),(Isuzu)','8125.00',0);
+insert into AirFilters values('A-358S','MITSUBISHI','Fuso (6D16,6D22)','9750.00',0);
+insert into AirFilters values('A-361','MITSUBISHI','Fuso,FV416,FV419,UD Nissan','7950.00',0);
+insert into AirFilters values('A-362S','MITSUBISHI','Fuso Bus 6D15','6250.00',0);
+insert into AirFilters values('A-364','MITSUBISHI','Rosa (4D 34T)','6660.00',0);
+insert into AirFilters values('A-366','MITSUBISHI','Fuso Truck/Bus 8DC9','9350.00',0);
+insert into AirFilters values('A-368','MITSUBISHI','Fuso Eng 6D17,6m60','8870.00',0);
+insert into AirFilters values('A-370','MITSUBISHI','Fuso ,FH Series','7975.00',0);
+insert into AirFilters values('A-371','MITSUBISHI','Fuso Truck FY Series','13535.00',0);
+insert into AirFilters values('A-3001','MITSUBISHI','RVR (4G63) Galant','2210.00',0);
+insert into AirFilters values('A-3002','MITSUBISHI','Canter (4D35,36)1996','3485.00',0);
+insert into AirFilters values('A-3003','MITSUBISHI','Canter (4D34T)fe639,649','4870.00',0);
+insert into AirFilters values('A-3004','MITSUBISHI','Minicar','2210.00',0);
+insert into AirFilters values('A-3006','MITSUBISHI','Lancer Mirage Diesel HD65,68','3570.00',0);
+insert into AirFilters values('A-3007','MITSUBISHI','Lancer 4G91 CB3A Carb','2670.00',0);
+insert into AirFilters values('A-3009','MITSUBISHI','Delica L400','4350.00',0);
+insert into AirFilters values('A-3010','MITSUBISHI','Delica 4G63 Eng','4400.00',0);
+insert into AirFilters values('A-3011','MITSUBISHI','Lancer CK1A 2A Pajero','2520.00',0);
+insert into AirFilters values('A-3012','MITSUBISHI','RVR','2575.00',0);
+insert into AirFilters values('A-3014','MITSUBISHI','Pajero,Challenger,Debonair(6G74)','3050.00',0);
+insert into AirFilters values('A-3015S','MITSUBISHI','Pajero (4M40)','3275.00',0);
+insert into AirFilters values('A-3016S','MITSUBISHI','Pickup L200','3980.00',0);
+insert into AirFilters values('A-3017','MITSUBISHI','Montero(4M41T)','2500.00',0);
+insert into AirFilters values('A-3019','MITSUBISHI','EX-Wagon (3G83 Eng)','2500.00',0);
+insert into AirFilters values('A-3020','MITSUBISHI','Canter (4D33,4M51,4M40) FB70','3475.00',0);
+insert into AirFilters values('A-3021','MITSUBISHI','Colt Z 21A,4A90,4G15,Z28A','2155.00',0);
+insert into AirFilters values('A-3023','MITSUBISHI','Canter FE7#,4M 50 Series','5775.00',0);
+insert into AirFilters values('A-3025','MITSUBISHI','OutLander CW5W,new Delica','3755.00',0);
+insert into AirFilters values('A-427S','MITSUBISHI','Rosa(4d33,4D31T) BE437,437S','3725.00',0);
+insert into AirFilters values('A-413S','ISUZU','Journey K (6BD1)','4100.00',0);
+insert into AirFilters values('A-503','ISUZU','ELF 250,Caravan','1870.00',0);
+insert into AirFilters values('A-504','ISUZU','ELF 350,Journey','2625.00',0);
+insert into AirFilters values('A-509','ISUZU','ELF Wide','2345.00',0);
+insert into AirFilters values('A-510V','ISUZU','Fargo WER51,62','2495.00',0);
+insert into AirFilters values('A-517A','ISUZU','Trooper UB 17','1905.00',0);
+insert into AirFilters values('A-519','ISUZU','ELF 350,NKR66(4HF1)','4455.00',0);
+insert into AirFilters values('A-520','ISUZU','Pickup,(4JB1)UB355,69 Trooper','2175.00',0);
+insert into AirFilters values('A-521','ISUZU','Pickup (4JB1)','2360.00',0);
+insert into AirFilters values('A-522','ISUZU','Truck NHR69 4JG2','2690.00',0);
+insert into AirFilters values('A-524V','ISUZU','ELF NKR71,VKR69,Nissan Atlas,Condor','2650.00',0);
+insert into AirFilters values('A-525V','ISUZU','Trooper UBS73','2150.00',0);
+insert into AirFilters values('A-527','ISUZU','Isuzu ELF','4080.00',0);
+insert into AirFilters values('A-563','ISUZU','Truck Forward FTR(6HE1) FRD32,FRR ','7125.00',0);
+insert into AirFilters values('A-564','ISUZU','Bus','7375.00',0);
+insert into AirFilters values('A-566','ISUZU','Truck GIGA CX','11445.00',0);
+insert into airfilters values('A-575S','ISUZU','Truck 6BD1',0000.00,0);
+insert into airfilters values('A-576','ISUZU','ELF NKS 66 (4HF1), NPR 58 (4BE1), NP S59 (4BD1)',4215.00,0);
+insert into airfilters values('A-578','ISUZU','Giga CV, CX',15450.00,0);
+insert into airfilters values('A-579','ISUZU','ELF NPR 70 93.7 4HE1-T',5665.00,0);
+insert into airfilters values('A-580','ISUZU','Truck GIGA (6SD1)',12905.00,0);
+insert into airfilters values('A-404','MAZDA','Familia FA4 TV 1300',995.00,0);
+insert into airfilters values('A-422','MAZDA','Bongo Brawny',1675.00,0);
+insert into airfilters values('A-423V','MAZDA','Familia BF 3P 5P',1230.00,0);
+insert into airfilters values('A-426S','MAZDA','Titan (HA) (SL) 3000, 3500cc',3390.00,0);
+insert into airfilters values('A-428V','MAZDA','Bongo Petrol',1665.00,0);
+insert into airfilters values('A-435S','MAZDA','Bongo (R2)',3165.00,0);
+insert into airfilters values('A-436','MAZDA','Bongo',2265.00,0);
+insert into airfilters values('A-437V','MAZDA','Familia BF5P (EGI)',2705.00,0);
+insert into airfilters values('A-439V','MAZDA','Familia Diesel (PN)',2545.00,0);
+insert into airfilters values('A-441V','MAZDA','Familia BE1P, BF5P (E3)',2075.00,0);
+insert into airfilters values('A-442V','MAZDA','Familia BE3P 5P',1575.00,0);
+insert into airfilters values('A-444S','MAZDA','Titan (4HF1) 4300',4450.00,0);
+insert into airfilters values('A-445S','MAZDA','Titan 3500 Turbo',0000.00,0);
+insert into airfilters values('A-447V','MAZDA','626, Capella Diesel',2320.00,0);
+insert into airfilters values('A-449V','MAZDA','Interplay / Astina',1865.00,0);
+insert into airfilters values('A-450','MAZDA','Bongo Bawny (VS) 3000',2550.00,0);
+insert into airfilters values('A-451V','MAZDA','Familia BG 3P',2060.00,0);
+insert into airfilters values('A-452V','MAZDA','Capella',5155.00,0);
+insert into airfilters values('A-453S','MAZDA','Bongo SE28M SD29M R2',3825.00,0);
+insert into airfilters values('A-454V','MAZDA','Eunos Preso 1500 1800',3265.00,0);
+insert into airfilters values('A-457','MAZDA','Familia BG3P',1975.00,0);
+insert into airfilters values('A-458','MAZDA','BH Series BHA 4EE - Diesel',3735.00,0);
+insert into airfilters values('A-459','MAZDA','Titan (SL) 3500',3100.00,0);
+insert into airfilters values('A-462V','MAZDA','Ford Festiva',2100.00,0);
+insert into airfilters values('A-463','MAZDA','Bongo (F*), 1800',2235.00,0);
+insert into airfilters values('A-464','MAZDA','Bongo (R2)',2695.00,0);
+insert into airfilters values('A-465S','MAZDA','Bongo SRSS',3575.00,0);
+insert into airfilters values('A-466','MAZDA','Titan',3750.00,0);
+insert into airfilters values('A-468V','MAZDA','Mazda MPV GY 2500cc, Capella RF Diesel',3385.00,0);
+insert into airfilters values('A-470','MAZDA','Mazda 6, Tribute, MPV',2860.00,0);
+insert into airfilters values('A-471','MAZDA','Titan Eng- WL, FE',2945.00,0);
+insert into airfilters values('A-472','MAZDA','Mazd 3/ Axcela',2335.00,0);
+insert into airfilters values('A-473','MAZDA','RX 8',5615.00,0);
+insert into airfilters values('A-474','MAZDA','MAzda CX7, Atenza Diesel, MPV',3895.00,0);
+insert into airfilters values('A-475','MAZDA','Acxela 3 2000cc',3725.00,0);
+insert into airfilters values('A-527','MAZDA','Titan',4080.00,0);
+insert into airfilters values('A-1016','DAIHATSU','New Terios / BE GO',3050.00,0);
+insert into airfilters values('A-713S','DAIHATSU','Taft, Delta, Rocky',3540.00,0);
+insert into airfilters values('A-714','DAIHATSU','Charade G10, 11',1450.00,0);
+insert into airfilters values('A-718','DAIHATSU','Charade G101S, G101',1725.00,0);
+insert into airfilters values('A-719','DAIHATSU','Charade G30 Turbo',1770.00,0);
+insert into airfilters values('A-720','DAIHATSU','Cuore',1780.00,0);
+insert into airfilters values('A-721','DAIHATSU','Cuore L80',0000.00,0);
+insert into airfilters values('A-726','DAIHATSU','Hijet S200P',1355.00,0);
+insert into airfilters values('A-728','DAIHATSU','Cuore L200, 500',2400.00,0);
+insert into airfilters values('A-729','DAIHATSU','Cuore L200, 510',1980.00,0);
+insert into airfilters values('A-730A','DAIHATSU','Applause',2050.00,0);
+insert into airfilters values('A-733','DAIHATSU','HI JET S100W, 110, 120',1975.00,0);
+insert into airfilters values('A-734','DAIHATSU','MIRA, Cuore L502',2050.00,0);
+insert into airfilters values('A-735','DAIHATSU','Cuore L502 S',1575.00,0);
+insert into airfilters values('A-736','DAIHATSU','HIJET S100, 110',1915.00,0);
+insert into airfilters values('A-737','DAIHATSU','Storia, Toyota Duet',1535.00,0);
+insert into airfilters values('A-738','DAIHATSU','Cuore L910',2205.00,0);
+insert into airfilters values('A-739','DAIHATSU','CAMI, Terios',1980.00,0);
+insert into airfilters values('A-740','DAIHATSU','Terios (K3) VE7',2110.00,0);
+insert into airfilters values('A-741','DAIHATSU','Daihatsu YRV',2110.00,0);
+insert into airfilters values('A-742','DAIHATSU','HI JET S120',2215.00,0);
+insert into airfilters values('A-743','DAIHATSU','New Hijet',3140.00,0);
+insert into airfilters values('A-746','DAIHATSU','Daihatsu Cuore',3005.00,0);
+insert into airfilters values('A-748','DAIHATSU','Hijet S 200, S 320',2240.00,0);
+insert into airfilters values('A-606S','HINO','Rainbow (HOTC)',5010.00,0);
+insert into airfilters values('A-609','HINO','Truck / Bus EF550, EV700, EF750D, EK200',13050.00,0);
+insert into airfilters values('A-610','HINO','Rainbow (WO6E, HOTD)',6145.00,0);
+insert into airfilters values('A-611','HINO','Rainbow Bus RB Series',3950.00,0);
+insert into airfilters values('A-612','HINO','Ranger (WO6D, WO4C - T)',4200.00,0);
+insert into airfilters values('A-618','HINO','Ranger FD, FE, GD1',8085.00,0);
+insert into airfilters values('A-619','HINO','Ranger (JOTC) Rainbow',6675.00,0);
+insert into airfilters values('A-620','HINO','Truck K13D, K17D, etc',15695.00,0);
+insert into airfilters values('A-622','HINO','Blue Ribbon Bus J08E, J07E',11050.00,0);
+insert into airfilters values('A-623','HINO','Tractor Shie E13C',18845.00,0);
+insert into airfilters values('A-819','HONDA','Civic (AH, AG) 1-3, 1-5',1275.00,0);
+insert into airfilters values('A-832V','HONDA','Civic (EG8) Ex',1395.00,0);
+insert into airfilters values('A-834V','HONDA','Civic, Grand Civic EF2',1570.00,0);
+insert into airfilters values('A-840','HONDA','Acty HA3/415',1560.00,0);
+insert into airfilters values('A-843V','HONDA','Civic EG8 D15B',1880.00,0);
+insert into airfilters values('A-846','HONDA','Ascot CE 4, Inspire CE 5',2525.00,0);
+insert into airfilters values('A-850','HONDA','Accord CD3 F18B',3100.00,0);
+insert into airfilters values('A-852V','HONDA','Ferio EK3 (D15B) 1500cc Vi',2415.00,0);
+insert into airfilters values('A-853','HONDA','Acty',1875.00,0);
+insert into airfilters values('A-857V','HONDA','Logo Gas 1300',1785.00,0);
+insert into airfilters values('A-858V','HONDA','Accord CF5 (F20B)',2430.00,0);
+insert into airfilters values('A-859','HONDA','Accord CF3 F18B',2775.00,0);
+insert into airfilters values('A-863V','HONDA','Acty 99.5 onwards',1810.00,0);
+insert into airfilters values('A-868','HONDA','Stream, Integra, (K20A)',2200.00,0);
+insert into airfilters values('A-869V','HONDA','Civic EU2 D15B',2750.00,0);
+insert into airfilters values('A-870V','HONDA','Civic ES1, ES2, D15B',2800.00,0);
+insert into airfilters values('A-874V','HONDA','Honda FIT GD 1(Jazz), GD 4 1500',1975.00,0);
+insert into airfilters values('A-875V','HONDA','ACTY HH6',2020.00,0);
+insert into airfilters values('A-879V','HONDA','Accord CL7',2935.00,0);
+insert into airfilters values('A-880V','HONDA','Honda FIT Aria',2295.00,0);
+insert into airfilters values('A-884','HONDA','Honda FIT GD Series, GD1-L13A, GD 4-L15A',2875.00,0);
+insert into airfilters values('A-886V','HONDA','Civic FD1',3200.00,0);
+insert into airfilters values('A-738','SUBARU','Subaru R2 660cc',2205.00,0);
+insert into airfilters values('A-911BV','SUBARU','Subaru Leone EA65 (AAZ) 1500',1500.00,0);
+insert into airfilters values('A-917V','SUBARU','Subaru Sambar 90.3 onwards',1775.00,0);
+insert into airfilters values('A-920','SUBARU','Subaru Vivio KK 04 (92-98)',1850.00,0);
+insert into airfilters values('A-923','SUBARU','Subaru Legacy B4, Impreza',2495.00,0);
+insert into airfilters values('A-926','SUBARU','Subaru Legacy BL5',3220.00,0);
+insert into airfilters values('A-927V','SUBARU','Subaru Legacy BG2, 3, 4, EJ18, 20, Impreza GF 2,3,4',1860.00,0);
+insert into airfilters values('A-928','SUBARU','Subaru RC2',2490.00,0);
+insert into airfilters values('A-941','SUZUKI','Suzuki ALTO SS80, 800cc',1025.00,0);
+insert into airfilters values('A-942','SUZUKI','Suzuki Cultus AA41-G10',1435.00,0);
+insert into airfilters values('A-943','SUZUKI','Suzuki Carry F6A',1400.00,0);
+insert into airfilters values('A-944','SUZUKI','Suzuki Jimny',1690.00,0);
+insert into airfilters values('A-945A','SUZUKI','Suzuki ALTO (F8A) 800cc',2025.00,0);
+insert into airfilters values('A-946V','SUZUKI','Suzuki Cultus G10 1000cc',1680.00,0);
+insert into airfilters values('A-947','SUZUKI','Suzuki Every DE 51V',1435.00,0);
+insert into airfilters values('A-948A','SUZUKI','Suzuki ALTO (F6A) CR225 Wagon RCT215',1785.00,0);
+insert into airfilters values('A-950','SUZUKI','Suzuki Cultus AA33S - (G13B)',3100.00,0);
+insert into airfilters values('A-952V','SUZUKI','Suzuki ALTO (F6A) CS/ HD',1690.00,0);
+insert into airfilters values('A-953A','SUZUKI','Cultus',1810.00,0);
+insert into airfilters values('A-954A','SUZUKI','Suzuki Cultus AA34S - (G13B)',2000.00,0);
+insert into airfilters values('A-955','SUZUKI','Suzuki Carry/ Every DF51',1400.00,0);
+insert into airfilters values('A-956','SUZUKI','Suzuki Escudo',2520.00,0);
+insert into airfilters values('A-957','SUZUKI','Suzuki Cultus (G13B) G15A',2050.00,0);
+insert into airfilters values('A-958','SUZUKI','Suzuki Vitara Escudo 1600 Petrol',2520.00,0);
+insert into airfilters values('A-959','SUZUKI','Suzuki Maruti ZEN',2460.00,0);
+insert into airfilters values('A-960','SUZUKI','Escudo 1600 Petrol G16A',3025.00,0);
+insert into airfilters values('A-961','SUZUKI','Suzuki ALTO KE1 98-1',1820.00,0);
+insert into airfilters values('A-962','SUZUKI','Maruti ZEN, Suzuki HA 11S Alto',2155.00,0);
+insert into airfilters values('A-963','SUZUKI','Suzuki Carry DA52',1670.00,0);
+insert into airfilters values('A-964','SUZUKI','Suzuki Alto HA235 Wagon',1720.00,0);
+insert into airfilters values('A-965','SUZUKI','Aerio RA21S',1995.00,0);
+insert into airfilters values('A-966','SUZUKI','Suzuki Jimmy',1935.00,0);
+insert into airfilters values('A-967','SUZUKI','Suzuki Swift, Chevrolet Cruze',2050.00,0);
+insert into airfilters values('A-968','SUZUKI','Suzuki Alto, Turbo HP 22S',1850.00,0);
+insert into airfilters values('A-969','SUZUKI','Suzuki Aerio RA21S',2025.00,0);
+insert into airfilters values('A-970','SUZUKI','Suzuki Wagon R',2155.00,0);
+insert into airfilters values('A-971','SUZUKI','Suzuki Swift ZC, 115',1895.00,0);
+insert into airfilters values('A-972','SUZUKI','Suzuki Alto HA24S, HA23S',1855.00,0);
+insert into airfilters values('A-973','SUZUKI','Suzuki Every 2005-7',2250.00,0);
+insert into airfilters values('A-974','SUZUKI','Suzuki Escudo J20A, H27A',3220.00,0);
+insert into airconfilters values('AC-101E','TOYOTA','Toyota Vitz, Corolla NZE 120, 121, Platz, SCP, NCP',2165.00,0);
+insert into airconfilters values('AC-102E','TOYOTA','Toyota Camry, ACV30, 35 Hilux Surf, Harrier, Land Cruiser, Prado, RZJ120W, KDJ12',2550.00,0);
+insert into airconfilters values('AC-103E','TOYOTA','Verossa, Crown, Harrier Mark 11',2550.00,0);
+insert into airconfilters values('AC-107E','TOYOTA','Toyota Passo, Daihatsu',2055.00,0);
+insert into airconfilters values('AC-108E','TOYOTA','Toyota Vitz KSP 90, Corolla A410, Camry ACV40, Crown GRS 180-182, New RAV4',2700.00,0);
+insert into airconfilters values('AC-201E','NISSAN','Nissan Sunny B15, Primera',2865.00,0);
+insert into airconfilters values('AC-202E','NISSAN','Nissan Cedric, Gloria Y33, Cefiro, AD Van',2870.00,0);
+insert into airconfilters values('AC-203','NISSAN','Nissan Pulsar, March K11, HK11',3210.00,0);
+insert into airconfilters values('AC-204E','NISSAN','NissanMarch K12, Cube CR 14 DE ',2550.00,0);
+insert into airconfilters values('AC-206E','NISSAN','Nissan Cedric, Gloria Y34',2670.00,0);
+insert into airconfilters values('AC-208E','NISSAN','Wing Road, TiiDa, New Bluebird',2550.00,0);
+insert into airconfilters values('AC-301E','MITSUBISHI','Mitsubihi Pajero Mini, IO, Minica',3695.00,0);
+insert into airconfilters values('AC-401E','MAZDA','Mazda Atenza',2750.00,0);
+insert into airconfilters values('AC-402E','MAZDA','Mazda Demio, DY 3W',2550.00,0);
+insert into airconfilters values('AC-701E','DAIHATSU','YRV, Storia M200, M100, Mira L710, 910',2550.00,0);
+insert into airconfilters values('AC-702E','DAIHATSU','Daihatsu Mira, L7100, L250, L260, L650',2550.00,0);
+insert into airconfilters values('AC-801','HONDA','Honda Civic EK 3',2925.00,0);
+insert into airconfilters values('AC-803E','HONDA','Honda Civic, Ferio, ES 1, 2, 3 EU 123',2725.00,0);
+insert into airconfilters values('AC-804E','HONDA','Honda Life',2550.00,0);
+insert into airconfilters values('AC-805E','HONDA','Honda Fit, Aria L13, L15',2550.00,0);
+insert into airconfilters values('AC-806E','HONDA','Honda Accord, Civic, Life, Stream, That-S',2550.00,0);
+insert into airconfilters values('AC-901E','SUBARU','Subaru Legacy',2425.00,0);
+insert into airconfilters values('AC-902E','SUBARU','Subaru Impresa',2430.00,0);
+insert into airconfilters values('AC-931E','SUZUKI','Suzuki Alto HA 12, 21, 23, Wagon MF 215',3175.00,0);
+insert into airconfilters values('AC-932E','SUZUKI','Suzuki Swift HT51S, Chevrolet Cruze HR51S',2995.00,0);
+insert into airconfilters values('AC-933E','SUZUKI','Suzuki Alto H24V, Wagon R MH21S, MJ21S',2485.00,0);
+insert into airconfilters values('AC-934E','SUZUKI','Suzuki Every Wagon',2550.00,0);
+insert into airconfilters values('AC-935E','SUZUKI','Suzuki Aerio 1500 M15A, RB21S',2550.00,0);
+insert into oils (oilcode,company,pdnmngd,210L_Drum_L78,20L_Pall_L33,4LCan_L25,1L_Can_L19,4L_Loose,1L_Loose,500ML_Loose,250ML_Loose,100ML_Loose) VALUES('P-113-116','LANKA’,'SUPER PLUS SAE 30, 40 & 50',56323.00,5840.00,1410.00,385.00,1073.00,269.00,135.00,68.00,27.00);
+insert into oils (oilcode,company,pdnmngd,210L_Drum_L78,20L_Pall_L33,5L_Can_L27_28,1L_Can_L19,5L_Loose,1L_Loose,500ML_Loose,250ML_Loose,100ML_Loose) VALUES('P-107-111','LANKA’,'SUPER DS SAE 30, 40 & 50',53930.00,5590.00,1520.00,360.00,1285.00,257.00,129.00,65.00,26.00);
+insert into oils (oilcode,company,pdnmngd,210L_Drum_L78,20L_Pall_L33,5L_Can_L27_28,1L_Can_L19,5L_Loose,1L_Loose,500ML_Loose,250ML_Loose,100ML_Loose) VALUES('P-137-138','LANKA’,'GEAR MP 90 & 140',73895.00,7600.00,2020.00,440.00,1760.00,352.00,176.00,88.00,36.00);
+insert into oils (oilcode,company,pdnmngd,210L_Drum_L78,20L_Pall_L33,5L_Can_L27_28,1L_Can_L19,500ML_Bottle_L06,40ML_Sachet,4L_Loose,1L_Loose,500ML_Loose,250ML_Loose,100ML_Loose,10ML_Loose,20ML_Loose,30ML_Loose,40ML_Loose,50ML_Loose) VALUES('P-125','LANKA’,'2T OIL',48218.00,4555.00,1195.00,275.00,145.00,14.00,1149.00,230.00,115.00,58.00,23.00,2.50,5.00,7.00,10.00,12.00);
+insert into oils (oilcode,company,pdnmngd,210L_Drum_L78,20L_Pall_L33,5L_Loose,1L_Loose,500ML_Loose,250ML_Loose,100ML_Loose) VALUES('P-151','LANKA’,'PENTRO OIL',62420.00,6170.00,1487.00,298.00,149.00,75.00,30.00);
+insert into oils (oilcode,company,pdnmngd,500ML_Bottle_L06) VALUES('P-162','LANKA’,'SHOCK ABSORBER OIL H',190.00);
+insert into oils (oilcode,company,pdnmngd,500ML_Bottle_L06,250ML_Bootle_L04) VALUES('P-152','LANKA’,'HYDRAULIC BRAKE FLUID DOT 3',405.00,220.00);
+insert into oils (oilcode,company,pdnmngd,210L_Drum_L78,5L_Can_L27_28,1L_Can_L19,5L_Loose,1L_Loose,500ML_Loose,250ML_Loose,100ML_Loose) VALUES('P-157','LANKA’,'ATF II D',92050.00,2325.00,545.00,2192.00,439.00,220.00,110.00,44.00);
+insert into oils (oilcode,company,pdnmngd,4LCan_L25) VALUES('P-104','CALTEX’,'HAVOLINE FULLY SYNTHETIC SAE 10W/50',6505.00);
+insert into oils (oilcode,company,pdnmngd,210L_Drum_L78,4LCan_L25,1L_Can_L19) VALUES('P-104','CALTEX’,'HAVOLINE FORMULA SAE 15W/40',98150.00,2150.00,665.00);
+insert into oils (oilcode,company,pdnmngd,210L_Drum_L78,20L_Pall_L33,5L_Can_L27_28,1L_Can_L19) VALUES('P-356','CALTEX’,'DELO 400 MULTIGRADE SAE 15W/40',96240.00,10500.00,2970.00,539.00);
+insert into oils (oilcode,company,pdnmngd,210L_Drum_L78,20L_Pall_L33,5L_Can_L27_28,1L_Can_L19) VALUES('P-356','CALTEX’,'DELO GOLD(ISOSYN) Monograde SAE 40',74900.00,8355.00,2165.00,530.00);
+insert into oils (oilcode,company,pdnmngd,210L_Drum_L78,20L_Pall_L33,5L_Can_L27_28) VALUES('P-356','CALTEX’,'Caltex Delo Gold (ISOSYN) Multigrade SAE 15W-40',78670.00,8945.00,2280.00);
+insert into oils (oilcode,company,pdnmngd,210L_Drum_L78) VALUES('P-124','CALTEX’,'DELO SILVER SAE 40',72375.00);
+insert into oils (oilcode,company,pdnmngd,5L_Can_L27_28,1L_Can_L19) VALUES('P-144','CALTEX’,'THUBAN GL4 80W',1740.00,425.00);
+insert into oils (oilcode,company,pdnmngd,210L_Drum_L78) VALUES('P-144','CALTEX’,'CX Delo MTF SAE 80W90 (210LM)',101695.00);
+insert into oils (oilcode,company,pdnmngd,500ML_Bottle_L06,250ML_Bootle_L04) VALUES('P-163','CALTEX’,'BRAKE & CLUTCH FLUID DOT 3',530.00,295.00);
+insert into oils (oilcode,company,pdnmngd,500ML_Bottle_L06,250ML_Bootle_L04) VALUES('P-164','CALTEX’,'BRAKE & CLUTCH FLUID DOT 4',590.00,370.00);
+insert into oils (oilcode,company,pdnmngd,200L_Drum_L73,1L_Can_L19,500ML_Bottle_L06,250ML_Bootle_L04) VALUES('P-171','CALTEX’,'TEXAMATIC 1888',98810.00,730.00,453.00,235.00);
+insert into oils (oilcode,company,pdnmngd,1L_Can_L19,500ML_Bottle_L06) VALUES('P-674','CALTEX’,'EXTENDED LIFE RADIATOR COOLANT',310.00,170.00);
+insert into oils (oilcode,company,pdnmngd,180KG,15KG,500G,250G,100G) VALUES('P-183','CALTEX’,'MARFAK MP 2',76940.00,7050.00,260.00,155.00,75.00);
+insert into oils (oilcode,company,pdnmngd,180KG,15KG,500G) VALUES('P-184','CALTEX’,'MARFAK MP 3',76940.00,7680.00,300.00);
+insert into oils (oilcode,company,pdnmngd,170KG,15KG,500G) VALUES('P-185','CALTEX’,'STARPLEX 2',101360.00,9800.00,410.00);
+insert into oils (oilcode,company,pdnmngd,180KG,15KG,500G) VALUES('P-325','CALTEX’,'CHEVRON R P M GREASE SRI 2',230180.00,20820.00,690.00);
+
+insert into servent values ('SE001','Hansa','1990-06-04','901563349V','2005-06-04',0,00.00);
+insert into servent values ('SE002','Menik','1990-05-28','901893355V','2004-07-14',0,00.00);
+insert into servent values ('SE003','Upeksha','1990-09-21','901595655V','2006-08-02',0,00.00);
+insert into servent values ('SE004','Kalpani','1990-12-26','901895555V','2009-01-14',0,00.00);
+insert into servent values ('SE005','Pramith','1990-09-21','901595655V','2006-08-02',0,00.00);
+insert into servent values ('SE006','Akila','1990-08-05','901889655V','2004-01-14',0,00.00);
+insert into servent values ('SE007','Kasun','1990-02-28','901593255V','2006-08-02',0,00.00);
+
+insert into customer values ('C001','Hansa','1990-06-04','901563349V','Nissan','');
+insert into customer values ('C002','Menik','1990-05-28','901893355V','Toyota','');
+insert into customer values ('C003','Upeksha','1990-09-21','901595655V','Subaru','');
+insert into customer values ('C004','Kalpani','1990-12-26','901895555V','Mitsubishi','');
+insert into customer values ('C005','Pramith','1990-09-21','901595655V','Hino','');
+insert into customer values ('C006','Akila','1990-08-05','901889655V','Isuzu','');
+insert into customer values ('C007','Kasun','1990-02-28','901593255V','Mazda','');
